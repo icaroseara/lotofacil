@@ -25,12 +25,20 @@ describe Lottery do
 				before do
 					@loto.generate_fixed_dozens	
 				end
-				it "its possible generate fixed dozens" do
+				it "is possible generate fixed dozens" do
 					expect(@loto.fixed_dozens.size).to eq(14)
-				end
-				it "its possible generate remaining dozens" do 
-					@loto.generate_remainding_dozens
-					expect(@loto.remainding_dozens.size).to eq(11)
+				end				
+				context "when generate remaining dozens" do
+					before do
+						@loto.generate_remainding_dozens
+					end
+					it "is possible generate remaining dozens" do 					
+						expect(@loto.remainding_dozens.size).to eq(11)
+					end
+					it "is possible generate bets" do
+						@loto.generate_bets
+						expect(@loto.bets.size).to eq(11)
+					end
 				end
 			end
 		end
