@@ -1,8 +1,9 @@
 class Lottery
-	attr_reader :previous_results, :fixed_dozens
+	attr_reader :previous_results, :fixed_dozens,:remainding_dozens
 	def initialize
 		@previous_results = []
 		@fixed_dozens = []
+		@remainding_dozens = []
 	end
 	def add_previous_result *previous_result
 		@previous_results << previous_result.to_a if previous_result.size == 15
@@ -18,4 +19,8 @@ class Lottery
 		end	
 		@fixed_dozens.sort!
 	end	
+	def generate_remainding_dozens
+		all = 1..25
+		@remainding_dozens = all.to_a.select{|item| !fixed_dozens.include?(item)}
+	end
 end
