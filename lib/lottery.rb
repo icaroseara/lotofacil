@@ -18,7 +18,7 @@ class Lottery
 	end
 	def generate_fixed_dozens		
 		@fixed_dozens = find_repeated_dozens.sort 		
-		possibilities = (1..25).to_a - @previous_results.last		
+		possibilities = (1..25).to_a - (@previous_results.first & @previous_results.last)				
 		@fixed_dozens = @fixed_dozens | possibilities.sample(14 - @fixed_dozens.size)		
 		@fixed_dozens.sort!
 	end	
