@@ -11,7 +11,7 @@ class Lottery
 		@previous_results << previous_result.to_a if previous_result.size == 15
 	end
 	def add_result *result
-		@result << result
+		@result << result if result.size != 0
 	end
 	def find_repeated_dozens
 		@previous_results.first & @previous_results.last if @previous_results.size == 2
@@ -37,11 +37,13 @@ class Lottery
 		end
 	end
 	def show_bets
+		puts "Bets:"
 		@bets.map.with_index do |bet,index|
 			puts "Bet #{index+1} #{bet.to_s}"
 		end
 	end
 	def bets_result
+		puts "Bets results:"
 		@bets.map.with_index do |bet,index|
 			points = @result.first & bet 
 			puts "Bet #{index+1} #{bet.to_s} Qtd points: #{points.size}"
