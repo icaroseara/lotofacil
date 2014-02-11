@@ -34,10 +34,18 @@ describe Lottery do
 					end
 					it "is possible generate remaining dozens" do 					
 						expect(@loto.remainding_dozens.size).to eq(11)
-					end
-					it "is possible generate bets" do
-						@loto.generate_bets
-						expect(@loto.bets.size).to eq(11)
+					end					
+					context "when the bets were generated" do
+						before do
+							@loto.generate_bets
+						end
+						it "is possible generate bets" do						
+							expect(@loto.bets.size).to eq(11)
+						end
+						it "is possible verify if any bets win the prize" do							
+							@loto.add_result(1,2,3,4,8,9,10,11,12,15,16,17,19,21,23)							
+							expect(@loto.result.size).to eq(1)
+						end
 					end
 				end
 			end

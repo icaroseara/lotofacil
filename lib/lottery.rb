@@ -1,13 +1,17 @@
 class Lottery
-	attr_reader :previous_results, :fixed_dozens,:remainding_dozens,:bets
+	attr_reader :previous_results, :fixed_dozens,:remainding_dozens,:bets, :result
 	def initialize
 		@previous_results = []
 		@fixed_dozens = []
 		@remainding_dozens = []
 		@bets = []
+		@result = []
 	end
 	def add_previous_result *previous_result
 		@previous_results << previous_result.to_a if previous_result.size == 15
+	end
+	def add_result *result
+		@result << result
 	end
 	def find_repeated_dozens
 		@previous_results.first & @previous_results.last if @previous_results.size == 2
@@ -30,6 +34,17 @@ class Lottery
 			bet << r 
 			bet = @fixed_dozens | bet
 			bets << bet.sort!
+		end
+	end
+	def show_bets
+		@bets.map.with_index do |bet,index|
+			puts "Bet #{index+1} #{bet.to_s}"
+		end
+	end
+	def bets_result
+		@bets.map.with_index do |bet,index|
+			points = @result.first & bet 
+			puts "Bet #{index+1} #{bet.to_s} Qtd points: #{points.size}"
 		end
 	end
 end
