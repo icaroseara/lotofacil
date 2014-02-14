@@ -6,20 +6,24 @@ describe Lottery do
 	context "when the lottery adds the previous result" do
 		before do 
 			@loto = Lottery.new
-			@loto.add_previous_result(1,2,3,5,6,7,8,13,15,16,17,18,20,21,23)
+			@loto.add_previous_result("02 04 05 07 08 10 11 12 14 16 17 18 19 22 24")
 		end
 		it "is possible add previous lottery result" do 				
 			expect(@loto.previous_results.last.size).to eq(15)
 		end
-		context "when the lottery adds the two previous result" do
+
+		context "when the lottery adds the five previous result" do
 			before do
-				@loto.add_previous_result(1,2,3,5,6,11,12,14,15,16,19,20,21,23,25)
+				@loto.add_previous_result("01 02 03 04 08 09 10 11 12 15 16 17 19 21 23")				
+				@loto.add_previous_result("01 02 03 05 06 07 08 13 15 16 17 18 20 21 23")				
+				@loto.add_previous_result("01 02 08 09 10 12 13 14 17 18 20 22 23 24 25")				
+				@loto.add_previous_result("01 02 03 04 05 07 10 11 13 17 18 19 20 21 23")
 			end			
-			it "is possible add two previous lottery's results" do 				
-				expect(@loto.previous_results.size).to eq(2)
+			it "is possible add five previous lottery's results" do 				
+				expect(@loto.previous_results.size).to eq(5)
 			end
-			it "is possible find dozens repeated in two previous results" do
-				expect(@loto.find_repeated_dozens.size).to eq(10)
+			it "is possible find dozens repeated in previous results" do
+				expect(@loto.find_repeated_dozens.size).to eq(7)
 			end
 			context "when generate fixed dozens" do
 				before do
