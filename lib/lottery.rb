@@ -32,11 +32,18 @@ class Lottery
 	def find_repeated_dozens		
 		@most_frequent_numbers.select {|k,v| v > 3} 		
 	end
-	def generate_fixed_dozens		
-		@fixed_dozens = find_repeated_dozens			
-		possibilities = @most_frequent_numbers.select {|k,v| v == 3}					
-		@fixed_dozens = @fixed_dozens.merge(Hash[possibilities.to_a.sample((14 - @fixed_dozens.size))])						
-		@fixed_dozens = @fixed_dozens.keys.to_a.sort!
+	def generate_fixed_dozens
+		@fixed_dozens = find_repeated_dozens		
+		return generate_possibilities(@fixed_dozens.size)
+	end
+	def generate_possibilities(frequency)
+		possibilities = @most_frequent_numbers.select {|k,v| v == 3}
+		@fixed_dozens = @fixed_dozens.merge(Hash[possibilities.to_a.sample((14 - @fixed_dozens.size))])
+		if @fixed_dozens.size==14
+			@fixed_dozens = @fixed_dozens.keys.to_a.sort!			
+		else
+			return generate_possibilities(frequency-1)
+		end
 	end	
 	def generate_remainding_dozens		
 		@remainding_dozens = (1..25).to_a.select{|item| !fixed_dozens.include?(item)}

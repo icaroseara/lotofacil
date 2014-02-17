@@ -2,6 +2,8 @@ require_relative '../lib/lottery'
 
 loto = Lottery.new
 # change the next lines with the last previous results
+# 1019 - 01	02 03 04 05 07 08 10 12	17 18 20 21	22 23
+loto.add_previous_result("01 02 03 04 05 07 08 10 12 17 18 20 21 22 23")
 # 1018 - 02 04 05 07 08 10 11 12 14 16 17 18 19 22 24
 loto.add_previous_result("02 04 05 07 08 10 11 12 14 16 17 18 19 22 24")
 # 1016 - 01 02 03 04 08 09 10 11 12 15 16 17 19 21 23
