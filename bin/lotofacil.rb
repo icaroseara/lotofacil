@@ -13,10 +13,8 @@ loto.add_previous_result("01 02 03 05 06 07 08 13 15 16 17 18 20 21 23")
 # 1014 - 01 02 08 09 10 12 13 14 17 18 20 22 23 24 25
 loto.add_previous_result("01 02 08 09 10 12 13 14 17 18 20 22 23 24 25")
 # 1013 - 01 02 03 04 05 07 10 11 13 17 18 19 20 21 23
-# loto.add_previous_result("01 02 03 04 05 07 10 11 13 17 18 19 20 21 23")
+loto.add_previous_result("01 02 03 04 05 07 10 11 13 17 18 19 20 21 23")
 
-repeated_dozens = loto.find_repeated_dozens
-puts "Repeated dozens #{repeated_dozens.size.to_s}"
 loto.generate_fixed_dozens
 puts "Fixed dozens #{loto.fixed_dozens.to_s}"
 loto.generate_remainding_dozens

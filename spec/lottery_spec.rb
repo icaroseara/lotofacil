@@ -22,9 +22,6 @@ describe Lottery do
 			it "is possible add five previous lottery's results" do 				
 				expect(@loto.previous_results.size).to eq(5)
 			end
-			it "is possible find dozens repeated in previous results" do
-				expect(@loto.find_repeated_dozens.size).to eq(7)
-			end
 			context "when generate fixed dozens" do
 				before do
 					@loto.generate_fixed_dozens	
